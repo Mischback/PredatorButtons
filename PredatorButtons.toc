@@ -1,0 +1,13 @@
+## Interface: 30200
+## Title: PredatorButtons
+## Author: Mischback
+## Version: Beta 0.9
+## DefaultState: disabled
+## OptionalDeps: Ace3, ButtonFacade
+## SavedVariablesPerCharacter: PredatorButtonsDB, PredatorBFDB
+
+
+# Embeds
+Libs\LibStub\Libstub.lua
+
+buttons.lua
