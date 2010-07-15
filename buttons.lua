@@ -85,15 +85,23 @@
 	local function HideBlizzardFrames()
 		-- debugging('HideBlizzardFrames()')
 		MainMenuBar:Hide()
-		MainMenuBarArtFrame:Hide()
 		MainMenuExpBar:Hide()
+		MainMenuBarMaxLevelBar:Hide()
+		MainMenuBarArtFrame:Hide()
+		PetActionBarFrame:Hide()
+		ShapeshiftBarFrame:Hide()
 		VehicleMenuBar:Hide()
 		VehicleMenuBarArtFrame:Hide()
-		MainMenuBar:SetScale(0.001)
-		MainMenuBarArtFrame:SetScale(0.001)
-		MainMenuExpBar:SetScale(0.001)
-		VehicleMenuBar:SetScale(0.001)
-		VehicleMenuBarArtFrame:SetScale(0.001)
+		-- MainMenuBar:Hide()
+		-- MainMenuBarArtFrame:Hide()
+		-- MainMenuExpBar:Hide()
+		-- VehicleMenuBar:Hide()
+		-- VehicleMenuBarArtFrame:Hide()
+		-- MainMenuBar:SetScale(0.001)
+		-- MainMenuBarArtFrame:SetScale(0.001)
+		-- MainMenuExpBar:SetScale(0.001)
+		-- VehicleMenuBar:SetScale(0.001)
+		-- VehicleMenuBarArtFrame:SetScale(0.001)
 	end
 
 	--[[ Updating the StanceBar
@@ -101,6 +109,9 @@
 	]]
 	local function StanceBarUpdate()
 		_G['ShapeshiftButton1']:SetPoint('TOPLEFT', stancebar, 'TOPLEFT', 0, 0)
+		for i=2, NUM_SHAPESHIFT_SLOTS do
+			_G['ShapeshiftButton'..i]:SetPoint('LEFT', _G['ShapeshiftButton'..i-1], 'RIGHT', 6, 0)
+		end
 	end
 
 	local function TotemOnShow()
@@ -361,7 +372,10 @@
 	_G['MultiBarBottomRightButton1']:SetPoint('TOPLEFT', multibarbottomright, 'TOPLEFT', 0, 0)
 	
 	-- PetBar
-	_G['PetActionBarFrame']:SetParent(petbar)
+	for i=1, 10 do
+		_G['PetActionButton'..i]:SetParent(petbar)
+	end
+	-- _G['PetActionBarFrame']:SetParent(petbar)
 	_G['PetActionBarFrame']:SetWidth(0.01)
 	_G['PetActionButton1']:ClearAllPoints()
 	_G['PetActionButton1']:SetPoint('TOPLEFT', petbar, 'TOPLEFT', 0, 0)
@@ -370,8 +384,9 @@
 	for i=1, NUM_SHAPESHIFT_SLOTS do
 		_G['ShapeshiftButton'..i]:SetWidth(36)
 		_G['ShapeshiftButton'..i]:SetHeight(36)
+		_G['ShapeshiftButton'..i]:SetParent(stancebar)
 	end
-	ShapeshiftBarFrame:SetParent(stancebar)
+	-- ShapeshiftBarFrame:SetParent(stancebar)
 	ShapeshiftBarFrame:SetWidth(0.01)
 	-- ShapeshiftBarFrame:SetScale(0.01)
 	ShapeshiftButton1:ClearAllPoints()
